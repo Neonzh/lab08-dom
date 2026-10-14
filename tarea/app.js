@@ -1,58 +1,17 @@
-// Tarea - Versión 2: con eventos
-console.log("app.js de la tarea (v2) cargado");
+// Tarea - Versión 1: solo DOM
+console.log("app.js de la tarea (v1) cargado");
 
-const formTarea = document.querySelector("#formTarea");
-const inputTarea = document.querySelector("#inputTarea");
+// Seleccionar elementos del DOM
 const listaTareas = document.querySelector("#listaTareas");
 const contadorTareas = document.querySelector("#contadorTareas");
-const mensajeError = document.querySelector("#mensajeError");
 
-let totalTareas = 0;
+// Crear un elemento estático de prueba usando createElement y appendChild (solo DOM)
+const tareaInicial = document.createElement("li");
+tareaInicial.innerHTML = `
+    <span>Aprender DOM y Eventos</span>
+    <button class="btn-eliminar">Eliminar</button>
+`;
+listaTareas.appendChild(tareaInicial);
 
-function actualizarContador(valor) {
-  totalTareas = valor;
-  contadorTareas.textContent = totalTareas;
-}
-
-// Evento submit para agregar tarea con validación
-formTarea.addEventListener("submit", (evento) => {
-  evento.preventDefault();
-
-  const texto = inputTarea.value.trim();
-
-  // Validación: si está vacío, muestra error en la página
-  if (texto === "") {
-    mensajeError.classList.add("visible");
-    return;
-  }
-
-  // Ocultar error si pasa la validación
-  mensajeError.classList.remove("visible");
-
-  // Crear elemento dinámicamente con createElement
-  const li = document.createElement("li");
-  li.innerHTML = `
-        <span>${texto}</span>
-        <button class="btn-eliminar">Eliminar</button>
-    `;
-
-  // Evento click para eliminar la tarea individualmente
-  const btnEliminar = li.querySelector(".btn-eliminar");
-  btnEliminar.addEventListener("click", () => {
-    li.remove();
-    actualizarContador(totalTareas - 1);
-  });
-
-  // Evento click opcional para marcar como completada
-  li.addEventListener("click", (e) => {
-    if (e.target.tagName !== "BUTTON") {
-      li.classList.toggle("completada");
-    }
-  });
-
-  listaTareas.appendChild(li);
-  actualizarContador(totalTareas + 1);
-
-  // Limpiar formulario
-  formTarea.reset();
-});
+// Actualizar contador estático
+contadorTareas.textContent = "1";
