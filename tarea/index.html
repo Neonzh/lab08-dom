@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tarea: Lista de Tareas Interactiva</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 0 20px;
+        background-color: #f9f9f9;
+        color: #333;
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
+      section {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+      input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fdfdfd;
+        border: 1px solid #eee;
+        padding: 10px;
+        margin-bottom: 8px;
+        border-radius: 4px;
+      }
+      li.completada span {
+        text-decoration: line-through;
+        color: #888;
+      }
+      .btn-eliminar {
+        background-color: #e74c3c;
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+      .btn-eliminar:hover {
+        background-color: #c0392b;
+      }
+      .error-msg {
+        color: #c0392b;
+        font-size: 13px;
+        margin-top: 5px;
+        display: none;
+      }
+      .error-msg.visible {
+        display: block;
+      }
+      .info {
+        font-size: 14px;
+        color: #555;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gestor de Tareas</h1>
+
+    <section>
+      <h2>Nueva Tarea</h2>
+      <form id="formTarea">
+        <input
+          id="inputTarea"
+          type="text"
+          placeholder="¿Qué necesitas hacer hoy?"
+        />
+        <button type="submit">Agregar</button>
+      </form>
+      <p id="mensajeError" class="error-msg">La tarea no puede estar vacía.</p>
+    </section>
+
+    <section>
+      <h2>Lista de Pendientes</h2>
+      <ul id="listaTareas">
+        <!-- Las tareas se agregarán dinámicamente aquí -->
+      </ul>
+      <p class="info">Total de tareas: <span id="contadorTareas">0</span></p>
+    </section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
